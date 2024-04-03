@@ -54,9 +54,10 @@ def update_chart(selected_region):
         filtered_df = df[df['region'] == selected_region]
     
     # Create a line chart
-    fig = px.line(filtered_df, x='date', y='sales', title="Pink Morsel Sales ({})".format(selected_region.capitalize()))
+    fig = px.line(filtered_df, x='date', y='sales', title="Pink Morsel Sales (" + str(selected_region.capitalize()) + ")")
     
     # Highlight the date of price increase
+    fig.add_vline(x='2021-01-15', line_dash='dash', line_color='red', annotation_text="Price Increase")
     
     # Update axes labels
     fig.update_xaxes(title_text="Date")
